@@ -42,6 +42,13 @@ class Lesson
      */
     private $content;
 
+    /**
+     * @var User
+     *
+     * @ORM\ManyToOne(targetEntity="User")
+     */
+    private $writer;
+
 
     /**
      * Get id
@@ -124,5 +131,28 @@ class Lesson
     {
         return $this->content;
     }
-}
 
+    /**
+     * Set writer
+     *
+     * @param \AppBundle\Entity\User $writer
+     *
+     * @return Lesson
+     */
+    public function setWriter(\AppBundle\Entity\User $writer = null)
+    {
+        $this->writer = $writer;
+
+        return $this;
+    }
+
+    /**
+     * Get writer
+     *
+     * @return \AppBundle\Entity\User
+     */
+    public function getWriter()
+    {
+        return $this->writer;
+    }
+}

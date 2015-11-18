@@ -1,6 +1,5 @@
 <?php
 
-// src/AppBundle/Entity/User.php
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
@@ -223,5 +222,13 @@ class User implements AdvancedUserInterface, \Serializable
         $this->plainPassword = $plainPassword;
 
         return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->getUsername();
     }
 }

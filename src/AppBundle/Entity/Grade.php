@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Grade
  *
- * @ORM\Table()
+ * @ORM\Table(name="grade")
  * @ORM\Entity(repositoryClass="AppBundle\Entity\GradeRepository")
  */
 class Grade
@@ -15,8 +15,8 @@ class Grade
     /**
      * @var integer
      *
-     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
+     * @ORM\Column(name="id", type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
@@ -34,6 +34,20 @@ class Grade
      * @ORM\Column(name="comment", type="string", length=125)
      */
     private $comment;
+
+    /**
+     * @var Lesson
+     *
+     * @ORM\ManyToOne(targetEntity="Lesson")
+     */
+    private $lesson;
+
+    /**
+     * @var User
+     *
+     * @ORM\ManyToOne(targetEntity="User")
+     */
+    private $user;
 
 
     /**
@@ -93,5 +107,52 @@ class Grade
     {
         return $this->comment;
     }
-}
 
+    /**
+     * Set lesson
+     *
+     * @param \AppBundle\Entity\Lesson $lesson
+     *
+     * @return Grade
+     */
+    public function setLesson(\AppBundle\Entity\Lesson $lesson = null)
+    {
+        $this->lesson = $lesson;
+
+        return $this;
+    }
+
+    /**
+     * Get lesson
+     *
+     * @return \AppBundle\Entity\Lesson
+     */
+    public function getLesson()
+    {
+        return $this->lesson;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \AppBundle\Entity\User $user
+     *
+     * @return Grade
+     */
+    public function setUser(\AppBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \AppBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+}
