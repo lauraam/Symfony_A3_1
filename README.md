@@ -28,3 +28,7 @@ php app/console doctrine:schema:update --dump-sql --force
 * API (JsonResponse ou [REST](http://symfony.com/doc/current/bundles/FOSRestBundle/index.html))
 * [Authentication](http://symfony.com/doc/current/cookbook/security/api_key_authentication.html)
 * Admin secured with CRUD ([AdminLTE](https://almsaeedstudio.com/preview) optional)
+
+
+thibaud[dot]bardin+iim[at]gmail[dot]com
+Dimanche 22 à 23h59

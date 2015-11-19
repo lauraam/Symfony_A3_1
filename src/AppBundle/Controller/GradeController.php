@@ -6,6 +6,7 @@ use AppBundle\Entity\Grade;
 use AppBundle\Form\GradeType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
 class GradeController extends Controller
@@ -83,5 +84,16 @@ class GradeController extends Controller
         return $this->render('grade/create.html.twig', [
             'form' => $form->createView(),
         ]);
+    }
+
+    /**
+     * @Route("/api/grade", name="api_grade")
+     */
+    public function apiIndexAction()
+    {
+        $repo   = $this->getDoctrine()->getManager()->getRepository('AppBundle:Grade');
+        $grades = $repo->findAllArray();
+
+        return new JsonResponse($grades);
     }
 }

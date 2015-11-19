@@ -40,9 +40,17 @@ class User implements AdvancedUserInterface, \Serializable
      */
     private $isActive;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="api_key", type="string", length=100, unique=true)
+     */
+    private $apiKey;
+
     public function __construct()
     {
         $this->isActive = true;
+        $this->apiKey   = md5(uniqid(mt_rand(), true));
         // may not be needed, see section on salt below
         // $this->salt = md5(uniqid(null, true));
     }
@@ -220,6 +228,26 @@ class User implements AdvancedUserInterface, \Serializable
     public function setPlainPassword($plainPassword)
     {
         $this->plainPassword = $plainPassword;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getApiKey()
+    {
+        return $this->apiKey;
+    }
+
+    /**
+     * @param string $apiKey
+     *
+     * @return User
+     */
+    public function setApiKey($apiKey)
+    {
+        $this->apiKey = $apiKey;
 
         return $this;
     }

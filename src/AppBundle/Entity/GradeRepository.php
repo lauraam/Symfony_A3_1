@@ -10,4 +10,10 @@ namespace AppBundle\Entity;
  */
 class GradeRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findAllArray()
+    {
+        return $this->createQueryBuilder('g')
+            ->getQuery()
+            ->getArrayResult();
+    }
 }
