@@ -19,6 +19,9 @@ class GradeType extends AbstractType
             ->add('comment')
             ->add('lesson')
             ->add('user')
+//            ->add('submit', 'submit', [
+//                'label' => 'Create',
+//            ])
         ;
     }
     

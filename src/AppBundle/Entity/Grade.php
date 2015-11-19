@@ -155,4 +155,12 @@ class Grade
     {
         return $this->user;
     }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->getComment();
+    }
 }
